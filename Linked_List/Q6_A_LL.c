@@ -93,7 +93,30 @@ int main()
 
 int moveMaxToFront(ListNode **ptrHead)
 {
-	/* add your code here */
+	ListNode *head = *ptrHead; // set head pointer from given ll.head address.
+	ListNode *current = head;  // set current pointer to traverse linked list from head.
+	ListNode *max = NULL;
+
+	int max_value = 0;
+	int head_value = head->item;
+
+	while (current->next != NULL) // escape loop when there's nothing to compare with current node.
+	{
+		if (current->item > current->next->item) // compare current node's item value with next node item value.
+		{
+			max_value = current->item;
+			max = current; // set max pointer to the node if current node contains max value.
+			current = current->next;
+		}
+		else
+		{
+			current = current->next;
+		}
+	}
+
+	// set max_value to head node item value, set head_value to max node item value.
+	head->item = max_value;
+	max->item = head_value;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
