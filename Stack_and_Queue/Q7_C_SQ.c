@@ -10,6 +10,7 @@ Purpose: Implementing the required functions for Question 7 */
 #include <stdlib.h>
 
 #define MIN_INT -1000
+#define ARRAY_SIZE 256
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +52,7 @@ int removeNode(LinkedList *ll, int index);
 
 int main()
 {
-	char ch, str[256];
+	char ch, str[ARRAY_SIZE];
 	int c, i;
 	c = 1;
 
@@ -102,6 +103,23 @@ int main()
 int balanced(char *expression)
 {
 	Stack str_stack;
+	str_stack.ll.head = NULL;
+	str_stack.ll.size = 0;
+	int idx = 0;
+
+	while (*(expression + idx) != '\0')
+	{
+		if (*(expression + idx) == '(' || *(expression + idx) == '[' || *(expression + idx) == '{')
+			push(&str_stack, *(expression + idx));
+		else
+			pop(&str_stack);
+		idx++;
+	}
+
+	if (isEmptyStack(&str_stack) == 0)
+		return 1;
+	else
+		return 0;
 }
 
 ////////////////////////////////////////////////////////////
