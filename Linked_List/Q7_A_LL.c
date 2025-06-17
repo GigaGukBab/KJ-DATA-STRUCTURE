@@ -84,7 +84,16 @@ int main()
 
 void RecursiveReverse(ListNode **ptrHead)
 {
-	/* add your code here */
+	ListNode *temp = *ptrHead;
+	// what is the base condition to stop recursion?
+	if (*ptrHead == NULL || (*ptrHead)->next == NULL) // defense code || base condition
+	{
+		return;
+	}
+	*ptrHead = temp->next;
+	RecursiveReverse(ptrHead);
+	temp->next->next = temp;
+	temp->next = NULL;
 }
 
 //////////////////////////////////////////////////////////////////////////////////
