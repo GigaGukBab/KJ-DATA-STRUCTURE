@@ -97,13 +97,24 @@ int main()
 
 //////////////////////////////////////////////////////////////////////////////////
 //
+
+// by calling maxHeight(node), this means return current tree's max height amount.
+// by calling maxHeight(node->left), this means return current tree's
+// left subtree's max height amount.
+// by calling maxHeight(node->right), this means return current tree's
+// right subtree's max height amount.
 int maxHeight(BTNode *node)
 {
     // Base condition: Consider that the height of an empty tree is -1
     if (node == NULL)
         return -1;
+    // compare between left subtree and right subtree.
+    // if left subtree's max height is larger than right,
+    // return left subtree's height including current own's hight.
     if (maxHeight(node->left) > maxHeight(node->right))
         return maxHeight(node->left) + 1;
+    // if right subtree's max height is larger than left,
+    // return right subtree's height including current own's hight.
     else
         return maxHeight(node->right) + 1;
 }
