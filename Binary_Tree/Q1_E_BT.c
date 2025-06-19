@@ -127,8 +127,8 @@ int main()
 int identical(BTNode *tree1, BTNode *tree2)
 {
     // Case: both tree1 and tree2 are NULL.
-    //       They share the same structure.
-    //       Return 1 (true).
+    //       we can think that they share the same structure.
+    //       So return 1 (true).
     if (tree1 == NULL && tree2 == NULL)
         return 1;
     // Case: either tree1 or tree2 is NULL.
